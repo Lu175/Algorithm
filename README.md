@@ -11,4 +11,4 @@ Study algorithm on C language with 'Do it'.
     + **1-QX.c**: Practice code in chapter 1.
     <br/>
 - Algorithm/**Chapter_X.md**<br/>
-    Assemble of Practice code in chapter X.
+    Assemble of Practice code in chapter X, and it has some study note.
