@@ -13,6 +13,7 @@
 * * *
 ## p.113
 >#### Q1
+#### [Code link](https://github.com/Lu175/Algorithm/blob/master/Code_repo/Chapter_03/3-Q1.c)
 ```C
 // __________linear search (sentinel method)__________
 #define _CRT_SECURE_NO_WARNINGS
@@ -65,6 +66,7 @@ int linSearch(int a[], int n, int key, int* ptr) {
 ```
 >#### Q2
 #### linSearch.h
+#### [Code link](https://github.com/Lu175/Algorithm/blob/master/Code_repo/Chapter_03/linSearch.h)
 ```C
 #pragma once
 #ifndef _LU175_LINEAR_SEARCH_PRINT_PROCESS
@@ -108,6 +110,7 @@ int linSearch(int a[], int n, int key, int* ptr) {
 #endif //_LU175_LINEAR_SEARCH_PRINT_PROCESS
 ```
 #### main.c
+#### [Code link](https://github.com/Lu175/Algorithm/blob/master/Code_repo/Chapter_03/3-Q2.c)
 ```C
 // __________linear search (sentinel method) 과정 출력하기__________
 #define _CRT_SECURE_NO_WARNINGS
