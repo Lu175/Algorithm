@@ -10,5 +10,5 @@ Study algorithm on C language with 'Do it'.
     + **1C-X.c**: Example code in chapter 1.
     + **1-QX.c**: Practice code in chapter 1.
     <br/>
-- Algorithm/**Chapter_X.md**
+- Algorithm/**Chapter_X.md**<br/>
     Assemble of Practice code in chapter X.
