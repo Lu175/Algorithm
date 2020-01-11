@@ -768,7 +768,7 @@ void* binsearch(const void* key, const void* base, size_t nmemb, size_t size, in
 
 				ti_p = ti_p_shift;
 			}
-			// [End] 왼쪽의 같은 요소값 검색
+// [End] 왼쪽의 같은 요소값 검색
 		}
 		else if (pc_cmpFlag == 1) { pl = pc + 1; }    // 검색 범위의 왼쪽 limit 줄이기
 		else { pr = pc - 1; }    // 검색 범위의 오른쪽 limit 줄이기
