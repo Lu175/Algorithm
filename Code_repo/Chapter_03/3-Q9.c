@@ -1,4 +1,4 @@
-// __________own bsearch function__________
+// __________binsearch2 function__________
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,32 +9,32 @@ int int_cmp(const int* a, const int* b);
 int main(void) {
 	int i, nx, key;
 	int* x;
-	int* p;    // °Ë»öÇÑ ¿ä¼Ò¿¡ ´ëÇÑ Æ÷ÀÎÅÍ
+	int* p;    // ê²€ìƒ‰í•œ ìš”ì†Œì— ëŒ€í•œ í¬ì¸í„°
 
-	puts("'bsearch' utility ÇÔ¼ö¸¦ »ç¿ëÇÑ °Ë»ö");
+	puts("'bsearch' utility í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•œ ê²€ìƒ‰");
 	do {
-		printf("¿ä¼Ò °³¼ö: ");
+		printf("ìš”ì†Œ ê°œìˆ˜: ");
 		scanf("%d", &nx);
 	} while (nx <= 0);
 	x = calloc(nx, sizeof(int));
-	printf("\nÀÓÀÇÀÇ %d°³ ¿ä¼Òµé·Î ±¸¼ºµÈ ¹è¿­À» ¿À¸§Â÷¼øÀ¸·Î »ı¼ºÇÕ´Ï´Ù.\n", nx);
+	printf("\nì„ì˜ì˜ %dê°œ ìš”ì†Œë“¤ë¡œ êµ¬ì„±ëœ ë°°ì—´ì„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ìƒì„±í•©ë‹ˆë‹¤.\n", nx);
 	printf("Random array x[%d] : ", nx);
 	srand(time(NULL));
-	x[0] = rand() % 10;    // Ã¹ ¿ä¼Ò
+	x[0] = rand() % 10;    // ì²« ìš”ì†Œ
 	printf("%3d", x[0]);
 	for (i = 1; i < nx; i++) {
 		do {
-			x[i] = rand() % (10 + 2 * i);    // index°¡ 1 Áõ°¡ÇÏ¸é ·£´ı ¼ıÀÚ ¹üÀ§µµ 2 Áõ°¡
-		} while (x[i] < x[i - 1]);    // ÀÌÀü ¿ä¼Ò°ªº¸´Ù ÀÛÀ¸¸é ÀçÀÔ·Â
+			x[i] = rand() % (10 + 2 * i);    // indexê°€ 1 ì¦ê°€í•˜ë©´ ëœë¤ ìˆ«ì ë²”ìœ„ë„ 2 ì¦ê°€
+		} while (x[i] < x[i - 1]);    // ì´ì „ ìš”ì†Œê°’ë³´ë‹¤ ì‘ìœ¼ë©´ ì¬ì…ë ¥
 		printf("%3d", x[i]);
 	}
-	printf("\n\n°Ë»ö°ª: ");
+	printf("\n\nê²€ìƒ‰ê°’: ");
 	scanf("%d", &key);
 	p = binsearch(&key, x, nx, sizeof(int), (int(*)(const void*, const void*)) int_cmp);    // binsearch
 	puts("");
 
-	if (p == NULL) { puts("°Ë»ö¿¡ ½ÇÆĞÇß½À´Ï´Ù."); }
-	else { printf("%d(Àº)´Â x[%d]¿¡ ÀÖ½À´Ï´Ù.\n", key, (int)(p - x)); }
+	if (p == NULL) { puts("ê²€ìƒ‰ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤."); }
+	else { printf("%d(ì€)ëŠ” x[%d]ì— ìˆìŠµë‹ˆë‹¤.\n", key, (int)(p - x)); }
 	free(x);
 
 	return 0;
@@ -44,7 +44,7 @@ int int_cmp(const int* a, const int* b) {
 	if (*a < *b) { return -1; }
 	else if (*a > * b) { return 1; }
 	else { return 0; }
-	// ¾Æ·¡¿Í °°ÀÌ ÀÛ¼ºÇÒ ¼ö µµ ÀÖ´Ù.
+	// ì•„ë˜ì™€ ê°™ì´ ì‘ì„±í•  ìˆ˜ ë„ ìˆë‹¤.
 	// return (*a < *b) ? -1 : ((*a > *b) ? 1 : 0)
 }
 
@@ -62,20 +62,20 @@ void* binsearch(const void* key, const void* base, size_t nmemb, size_t size, in
 		pc = (pl + pr) / 2;
 		ti_p = ta_addr + pc * size;
 		pc_cmpFlag = compar(key, (const void*)ti_p);
-		if (pc_cmpFlag == 0) {    // °Ë»ö success
-// [Start] ¿ŞÂÊÀÇ °°Àº ¿ä¼Ò°ª °Ë»ö
+		if (pc_cmpFlag == 0) {    // ê²€ìƒ‰ success
+// [Start] ì™¼ìª½ì˜ ê°™ì€ ìš”ì†Œê°’ ê²€ìƒ‰
 			while (1) {
-				pc_shift = pc - ++shift;    // pc¸¦ ¿ŞÂÊÀ¸·Î ÀÌµ¿
+				pc_shift = pc - ++shift;    // pcë¥¼ ì™¼ìª½ìœ¼ë¡œ ì´ë™
 				ti_p_shift = ta_addr + pc_shift * size;
 				pc_cmpFlag = compar(key, (const void*)ti_p_shift);
 				if (pc_cmpFlag != 0) { return ti_p; }
 
 				ti_p = ti_p_shift;
 			}
-			// [End] ¿ŞÂÊÀÇ °°Àº ¿ä¼Ò°ª °Ë»ö
+			// [End] ì™¼ìª½ì˜ ê°™ì€ ìš”ì†Œê°’ ê²€ìƒ‰
 		}
-		else if (pc_cmpFlag == 1) { pl = pc + 1; }    // °Ë»ö ¹üÀ§ÀÇ ¿ŞÂÊ limit ÁÙÀÌ±â
-		else { pr = pc - 1; }    // °Ë»ö ¹üÀ§ÀÇ ¿À¸¥ÂÊ limit ÁÙÀÌ±â
+		else if (pc_cmpFlag == 1) { pl = pc + 1; }    // ê²€ìƒ‰ ë²”ìœ„ì˜ ì™¼ìª½ limit ì¤„ì´ê¸°
+		else { pr = pc - 1; }    // ê²€ìƒ‰ ë²”ìœ„ì˜ ì˜¤ë¥¸ìª½ limit ì¤„ì´ê¸°
 	} while (pl <= pr);
-	return NULL;    // °Ë»ö fail
+	return NULL;    // ê²€ìƒ‰ fail
 }
